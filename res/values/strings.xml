@@ -1,0 +1,52 @@
+<resources>
+
+    <string name="app_name">LTEDiscovery</string>
+    <string name="title_discover">Discover</string>
+    <string name="title_signals">Signals</string>
+    <string name="title_map">Map</string>
+    <string name="str_lte_signal">LTE : </string>
+    <string name="cell_detail">查看原始数据</string>
+    <string name="str_signal">信号:</string>
+    <string name="str_all_cell">周围基站信息:</string>
+    <string name="cycle_start">Start</string>
+    <string name="tab_title_signal">信号</string>
+    <string name="tab_title_cell">基站</string>
+    <string name="tab_data_state">数据状态: </string>
+    <string name="tab_network_type">网络类型: </string>
+    <string name="tab_signal_strength">信号强度: </string>
+    <string name="tab_phone_location">手机基站: </string>
+    <string name="tab_cid">CID: </string>
+    <string name="tab_lac">LAC: </string>
+    <string name="data_disconnected">连接已断开</string>
+    <string name="data_connecting">正在连接</string>
+    <string name="data_connected">已连接</string>
+    <string name="data_suspended">DATA_SUSPENDED</string>
+    <string name="data_unknown">unknown</string>
+    <string name="network_operator_name">网络运营商: </string>
+    <string name="country_iso">国家代码: </string>
+    <string name="mcc_mnc">MCC+MNC: </string>
+    <string name="mcc">MCC: </string>
+    <string name="device">手机型号: </string>
+    <string name="phone_type">手机类型: </string>
+    <string name="is_network_roaming">是否漫游: </string>
+    <string name="signal_4g">4G信号: </string>
+    <string name="signal_2g_3g">2G/3G信号: </string>
+
+    <!-- default -->
+    <string name="default_tower">Tower: N/A</string>
+    <string name="default_location_network">Network: N/A</string>
+    <string name="default_gps_network">GPS: N/A</string>
+    <string name="default_dl_earfcn">DL EARFCN: N/A</string>
+    <string name="default_ul_earfcn">UL EARFCN: N/A</string>
+    <string name="default_dl_freq">DL Freq: N/A</string>
+    <string name="default_ul_freq">UL Freq: N/A</string>
+
+    <!-- card title -->
+    <string name="logcation">Location</string>
+    <string name="earfcn">EARFCN</string>
+    <string name="neighbor_cells">Neighbor Cells</string>
+    <string name="phone">手机信息</string>
+    <string name="lte_cell_info">LTE信号</string>
+    <string name="gsm_cell_info">GSM基站信息</string>
+
+</resources>
