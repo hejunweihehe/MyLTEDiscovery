@@ -21,6 +21,17 @@ a.一次只显示一种网络信号，系统保留切换不同类型信号的接口，比如说阿达4G路测和Sign
 
 b.把4G的信号和2G/3G的信号分别都显示，哪边有信号就显示哪边的。LTEDiscovery和网优百宝箱都是这个样子的。值得注意的是，它们都选择把2G和3G放在一起，因为两者的信号格式相同。
 
+下面列出需要显示的信号强度参数，所有的数据均来自于SignalStrength类。
+4G信号
+RSRP,getLteRsrp(),单位dB
+RSRQ,getLteRsrq(),单位dBm
+SNR,getLteRssnr(),单位dB
+
+2G/3G信号
+lac
+cid
+psc
+
 4.周围的基站信息
 这里可以参考LTEDiscovery、Netmonitor、NetMonster，后面两个会把所有扫描到的和已连接过的基站信息以log的形式全部保存下来。获取周围基站信息还是使用getNeighboringCellInfo比较好。
 我们的APP中，可以像Netmonitor、NetMonster一样，把所有连接过的和扫描到的全都收集起来，主要保存它们的位置号还有记录的日期。但是额外加上一个字段，显示此基站是否有连接过。
