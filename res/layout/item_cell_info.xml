@@ -6,12 +6,6 @@
 
     <!-- 2G/3G -->
 
-    <TextView
-        android:id="@+id/txt_network_type"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center" />
-
     <LinearLayout
         android:id="@+id/ll_2g_3g_root"
         style="@style/signal_layout"
@@ -19,6 +13,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="visible" >
+
+        <TextView
+            android:id="@+id/txt_2g_3g_network_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -189,7 +189,12 @@
         android:orientation="vertical"
         android:visibility="visible" >
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/txt_4g_network_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
