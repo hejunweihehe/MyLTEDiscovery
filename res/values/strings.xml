@@ -11,6 +11,7 @@
     <string name="cycle_start">Start</string>
     <string name="tab_title_signal">信号</string>
     <string name="tab_title_cell">基站</string>
+    <string name="tab_title_neighboring_cell">周围基站</string>
     <string name="tab_data_state">数据状态: </string>
     <string name="tab_network_type">网络类型: </string>
     <string name="tab_signal_strength">信号强度: </string>

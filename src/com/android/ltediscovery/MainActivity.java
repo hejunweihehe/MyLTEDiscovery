@@ -54,6 +54,9 @@ public class MainActivity extends Activity implements TabListener {
         localActionBar.addTab(localActionBar.newTab()
                 .setText(getString(R.string.tab_title_cell))
                 .setTabListener(this));
+        localActionBar.addTab(localActionBar.newTab()
+                .setText(getString(R.string.tab_title_neighboring_cell))
+                .setTabListener(this));
     }
 
     @Override
@@ -64,6 +67,10 @@ public class MainActivity extends Activity implements TabListener {
         } else if (tab.getText().equals(getString(R.string.tab_title_cell))) {
             getFragmentManager().beginTransaction().replace(R.id.fl_container,
                     new CellFragment()).commit();
+        } else if (tab.getText().equals(
+                getString(R.string.tab_title_neighboring_cell))) {
+            getFragmentManager().beginTransaction().replace(R.id.fl_container,
+                    new NeighboringFragment()).commit();
         }
     }
 

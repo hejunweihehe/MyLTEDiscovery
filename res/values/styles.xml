@@ -33,4 +33,8 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- fragment的根布局样式 -->
+    <style name="fragment_root_style">
+        <item name="android:padding">8dp</item>
+    </style>
 </resources>
