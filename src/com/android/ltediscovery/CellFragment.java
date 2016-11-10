@@ -109,8 +109,8 @@ public class CellFragment extends Fragment {
                 convertView = mInflater.inflate(R.layout.item_cell_info, null);
                 holder = new ViewHolder();
 
-                holder.txt_network_type = (TextView) convertView
-                        .findViewById(R.id.txt_network_type);
+                holder.txt_2g_3g_network_type = (TextView) convertView
+                        .findViewById(R.id.txt_2g_3g_network_type);
                 holder.txt_lac = (TextView) convertView
                         .findViewById(R.id.txt_lac);
                 holder.txt_cid = (TextView) convertView
@@ -130,6 +130,8 @@ public class CellFragment extends Fragment {
                 holder.txt_dbm = (TextView) convertView
                         .findViewById(R.id.txt_power);
 
+                holder.txt_4g_network_type = (TextView) convertView
+                        .findViewById(R.id.txt_4g_network_type);
                 holder.txt_4g_cid = (TextView) convertView
                         .findViewById(R.id.txt_4g_cid);
                 holder.txt_4g_mcc = (TextView) convertView
@@ -162,6 +164,7 @@ public class CellFragment extends Fragment {
             String networkType = "";
             if (cellInfo instanceof CellInfoLte) {
                 networkType = "LTE";
+                holder.txt_4g_network_type.setText(networkType);
                 holder.ll_2g_3g_root.setVisibility(View.GONE);
                 holder.ll_4g_root.setVisibility(View.VISIBLE);
 
@@ -192,6 +195,7 @@ public class CellFragment extends Fragment {
                 holder.ll_2g_3g_root.setVisibility(View.VISIBLE);
                 holder.ll_4g_root.setVisibility(View.GONE);
                 networkType = "GSM";
+                holder.txt_2g_3g_network_type.setText(networkType);
 
                 holder.txt_lac.setText(""
                         + ((CellInfoGsm) cellInfo).getCellIdentity().getLac());
@@ -218,11 +222,13 @@ public class CellFragment extends Fragment {
                 holder.ll_2g_3g_root.setVisibility(View.VISIBLE);
                 holder.ll_4g_root.setVisibility(View.GONE);
                 networkType = "CDMA";
+                holder.txt_2g_3g_network_type.setText(networkType);
             }
             else if (cellInfo instanceof CellInfoWcdma) {
                 holder.ll_2g_3g_root.setVisibility(View.VISIBLE);
                 holder.ll_4g_root.setVisibility(View.GONE);
                 networkType = "WCDMA";
+                holder.txt_2g_3g_network_type.setText(networkType);
 
                 holder.txt_lac
                         .setText(""
@@ -255,12 +261,12 @@ public class CellFragment extends Fragment {
                         + ((CellInfoWcdma) cellInfo).getCellSignalStrength()
                                 .getLevel());
             }
-            holder.txt_network_type.setText(networkType);
             return convertView;
         }
 
         class ViewHolder {
-            TextView txt_network_type;
+            //2/3G
+            TextView txt_2g_3g_network_type;
             TextView txt_lac;// lac
             TextView txt_cid;// ucid
             TextView txt_psc;// psc
@@ -269,8 +275,10 @@ public class CellFragment extends Fragment {
             TextView txt_asu;// asu
             TextView txt_dbm;// dbm
             TextView txt_power;// power
+            View ll_2g_3g_root;
 
             // 4g
+            TextView txt_4g_network_type;
             TextView txt_4g_cid;// 4g cids
             TextView txt_4g_mcc;// 4g mcc
             TextView txt_4g_mnc;// 4g mnc
@@ -281,7 +289,6 @@ public class CellFragment extends Fragment {
             TextView txt_4g_ta;// 4g ta
             TextView txt_4g_power;// power
 
-            View ll_2g_3g_root;
             View ll_4g_root;
         }
     }

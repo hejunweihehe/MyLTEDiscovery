@@ -39,6 +39,9 @@ public class SignalFragment extends Fragment {
     NameValueLayout rsrq;
     NameValueLayout rsrp;
     NameValueLayout snr;
+    NameValueLayout lte_asu;// asu level
+    NameValueLayout lte_cqi;// cqi
+
     String gsmDataName = "";
     private String netType = "GSM";
     private TextView txt_data_param;
@@ -94,13 +97,17 @@ public class SignalFragment extends Fragment {
         rsrq = new NameValueLayout(getActivity(), "RSRQ: ");
         rsrp = new NameValueLayout(getActivity(), "RSRP: ");
         snr = new NameValueLayout(getActivity(), "SNR: ");
+        lte_asu = new NameValueLayout(getActivity(), "ASU: ");
+        lte_cqi = new NameValueLayout(getActivity(), "CQI: ");
         lteImage = (ImageView) view.findViewById(R.id.img_lte_level);
         dataImage = (ImageView) view.findViewById(R.id.img_2g_3g_level);
         LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT,
                 LayoutParams.WRAP_CONTENT);
+        ll_4g_signal.addView(lte_cqi, layoutParams);
         ll_4g_signal.addView(rsrq, layoutParams);
         ll_4g_signal.addView(rsrp, layoutParams);
         ll_4g_signal.addView(snr, layoutParams);
+        ll_4g_signal.addView(lte_asu, layoutParams);
     }
 
     /**
@@ -221,6 +228,15 @@ public class SignalFragment extends Fragment {
                     double SNR = (Integer) ReflectUtils.invoke(signalStrength,
                             "getLteRssnr");
                     snr.setValueText("" + (SNR / 10) + "dB");
+
+                    Object asu = (Integer) ReflectUtils.invoke(signalStrength,
+                            "getLteAsuLevel");
+                    Object cqi = (Integer) ReflectUtils.invoke(signalStrength,
+                            "getLteCqi");
+                    // asu.s
+                    // cqi;
+                    lte_asu.setValueText("" + asu);
+                    lte_cqi.setValueText("" + cqi);
 
                     int TAC = ((CellInfoLte) cellInfo).getCellIdentity()
                             .getTac();
