@@ -36,6 +36,9 @@ psc
 这里可以参考LTEDiscovery、Netmonitor、NetMonster，后面两个会把所有扫描到的基站信息以保存下来。
 获取周围基站信息最好使用getNeighboringCellInfo。
 
+基站有两个获取的方式，都是TelephonyManager的方法，分别是getAllCellInfo和getNeighboringCellInfo。
+根据android API介绍，只有在getAllCellInfo方法获取不到数据时，再去调用getNeighboringCellInfo。当然我们也可以两个方法都调用，但是我在不同的机子测试的时候发现，这两个方法一般只有其中一个有数据，另一个则为空。所以暂时可以按照android系统的思路，先查看getAllCellInfo获取数据是否为空，为空则去getNeighboringCellInfo中获取，然后在页面上做一个TextView来提示用户，数据是从getAllCellInfo来的那么就显示“Serving”，数据是从getNeighboringCellInfo来的，就显示“Neighbor”
+
 保存的信息如下：
 在NeighboringCellInfo中所有能够获取到的公共字段属性。还有发现的日期。
 

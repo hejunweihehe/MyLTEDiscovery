@@ -1,6 +1,10 @@
 package com.android.ltediscovery;
 
+import java.lang.reflect.Field;
 import java.util.List;
+
+import com.android.ltediscovery.NeighboringFragment.MyAdapter.ViewHolder;
+import com.android.ltediscovery.utils.ViewUtils;
 import com.example.ltediscovery.R;
 import android.annotation.SuppressLint;
 import android.app.Fragment;
@@ -11,6 +15,7 @@ import android.telephony.CellInfoCdma;
 import android.telephony.CellInfoGsm;
 import android.telephony.CellInfoLte;
 import android.telephony.CellInfoWcdma;
+import android.telephony.NeighboringCellInfo;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
@@ -25,15 +30,16 @@ public class CellFragment extends Fragment {
     private TelephonyManager tm;
     private SignalStrengthListener listener = new SignalStrengthListener();
     ListView listView;
-    MyAdapter adapter;
+    AllCellInfoAdapter allCellInfoAdapter;
+    NeighboringCellAdapter neighboringCellAdapter;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_cell, container,
                 false);
         listView = (ListView) view.findViewById(R.id.list);
-        adapter = new MyAdapter();
-        listView.setAdapter(adapter);
+        allCellInfoAdapter = new AllCellInfoAdapter();
+        neighboringCellAdapter = new NeighboringCellAdapter();
         initNet();
         return view;
     }
@@ -62,20 +68,40 @@ public class CellFragment extends Fragment {
         @Override
         public void onSignalStrengthsChanged(
                 android.telephony.SignalStrength signalStrength) {
-            adapter.notifyDataSetChanged(tm.getAllCellInfo());
+            List<CellInfo> allCellInfos = tm.getAllCellInfo();
+            if (allCellInfos == null || allCellInfos.size() == 0) {
+                List<NeighboringCellInfo> neighboringCellInfos = tm
+                        .getNeighboringCellInfo();
+                listView.setAdapter(neighboringCellAdapter);
+                neighboringCellAdapter
+                        .notifyDataSetChanged(neighboringCellInfos);
+            } else {
+                listView.setAdapter(allCellInfoAdapter);
+                allCellInfoAdapter.notifyDataSetChanged(tm.getAllCellInfo());
+            }
         }
 
         @Override
         public void onDataConnectionStateChanged(int state) {
-            adapter.notifyDataSetChanged(tm.getAllCellInfo());
+            List<CellInfo> allCellInfos = tm.getAllCellInfo();
+            if (allCellInfos == null || allCellInfos.size() == 0) {
+                List<NeighboringCellInfo> neighboringCellInfos = tm
+                        .getNeighboringCellInfo();
+                listView.setAdapter(neighboringCellAdapter);
+                neighboringCellAdapter
+                        .notifyDataSetChanged(neighboringCellInfos);
+            } else {
+                listView.setAdapter(allCellInfoAdapter);
+                allCellInfoAdapter.notifyDataSetChanged(tm.getAllCellInfo());
+            }
         }
     }
 
-    class MyAdapter extends BaseAdapter {
+    class AllCellInfoAdapter extends BaseAdapter {
         List<CellInfo> data;
         LayoutInflater mInflater;
 
-        public MyAdapter() {
+        public AllCellInfoAdapter() {
             mInflater = LayoutInflater.from(getActivity());
         }
 
@@ -265,7 +291,7 @@ public class CellFragment extends Fragment {
         }
 
         class ViewHolder {
-            //2/3G
+            // 2/3G
             TextView txt_2g_3g_network_type;
             TextView txt_lac;// lac
             TextView txt_cid;// ucid
@@ -290,6 +316,93 @@ public class CellFragment extends Fragment {
             TextView txt_4g_power;// power
 
             View ll_4g_root;
+        }
+    }
+
+    class NeighboringCellAdapter extends BaseAdapter {
+        List<NeighboringCellInfo> data;
+        LayoutInflater mInflater;
+
+        public void notifyDataSetChanged(List<NeighboringCellInfo> data) {
+            this.data = data;
+            super.notifyDataSetChanged();
+        }
+
+        public NeighboringCellAdapter() {
+            mInflater = LayoutInflater.from(getActivity());
+        }
+
+        @Override
+        public int getCount() {
+            return data == null ? 0 : data.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ViewHolder holder;
+            if (convertView == null) {
+                convertView = mInflater.inflate(
+                        R.layout.item_neighboring_cell_info, null);
+                holder = new ViewHolder();
+                holder.txt_network_type = (TextView) convertView
+                        .findViewById(R.id.txt_network_type);
+                holder.txt_lac = (TextView) convertView
+                        .findViewById(R.id.txt_lac);
+                holder.txt_cid = (TextView) convertView
+                        .findViewById(R.id.txt_cid);
+                holder.txt_psc = (TextView) convertView
+                        .findViewById(R.id.txt_psc);
+                holder.txt_rssi = (TextView) convertView
+                        .findViewById(R.id.txt_rssi);
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+            NeighboringCellInfo cellInfo = data.get(position);
+
+            // init networktype
+            int type = cellInfo.getNetworkType();
+            Field[] fields = TelephonyManager.class.getFields();
+            for (Field f : fields) {
+                if (f.getName().startsWith("NETWORK_TYPE_")) {
+                    try {
+                        int val = (Integer) f.get(tm);
+                        if (val == type) {
+                            holder.txt_network_type.setText(f.getName()
+                                    .substring(13));
+                            break;
+                        }
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    } catch (IllegalArgumentException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            holder.txt_lac.setText("" + cellInfo.getLac());
+            holder.txt_cid.setText("" + cellInfo.getCid());
+            holder.txt_psc.setText("" + cellInfo.getPsc());
+            holder.txt_rssi.setText("" + cellInfo.getRssi());
+            return convertView;
+        }
+
+        class ViewHolder {
+            TextView txt_network_type;
+            TextView txt_lac;
+            TextView txt_cid;
+            TextView txt_psc;
+            TextView txt_rssi;
         }
     }
 }

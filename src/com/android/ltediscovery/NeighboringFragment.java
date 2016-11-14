@@ -87,6 +87,7 @@ public class NeighboringFragment extends Fragment {
                 holder = (ViewHolder) convertView.getTag();
             }
             NeighboringCellInfo cellInfo = data.get(position);
+
             ViewUtils.updateText(holder.cellInfo, cellInfo);
             return convertView;
         }

@@ -1,8 +1,6 @@
 package com.android.ltediscovery;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import com.android.ltediscovery.utils.ReflectUtils;
 import com.android.ltediscovery.utils.ViewUtils;
 import com.example.ltediscovery.R;
@@ -27,18 +25,14 @@ import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 public class AllCellActivity extends Activity {
     LinearLayout leftLayout;
     LinearLayout rightLayout;
     TelephonyManager tm;
-    Listener listener = new Listener();;
+    Listener listener = new Listener();
     TextView txt_signal;
     TextView txt_cell_size;
     TextView txt_all_cell;
