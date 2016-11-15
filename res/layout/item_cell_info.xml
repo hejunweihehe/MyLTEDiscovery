@@ -23,7 +23,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Serving"
+                android:text="@string/serving"
                 android:textStyle="italic|bold" />
 
             <TextView
@@ -46,7 +46,7 @@
                     android:id="@+id/textView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="LAC: " />
+                    android:text="@string/cell_info_lac" />
 
                 <TextView
                     android:id="@+id/txt_lac"
@@ -63,7 +63,7 @@
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CID: " />
+                    android:text="@string/cell_info_cid" />
 
                 <TextView
                     android:id="@+id/txt_cid"
@@ -80,7 +80,7 @@
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PSC: " />
+                    android:text="@string/cell_info_psc" />
 
                 <TextView
                     android:id="@+id/txt_psc"
@@ -101,7 +101,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="MCC: " />
+                    android:text="@string/cell_info_mcc" />
 
                 <TextView
                     android:id="@+id/txt_mcc"
@@ -117,7 +117,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="MNC: " />
+                    android:text="@string/cell_info_mnc" />
 
                 <TextView
                     android:id="@+id/txt_mnc"
@@ -152,7 +152,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="dBm: " />
+                    android:text="@string/cell_info_dbm" />
 
                 <TextView
                     android:id="@+id/txt_dbm"
@@ -168,7 +168,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ASU: " />
+                    android:text="@string/cell_info_asu" />
 
                 <TextView
                     android:id="@+id/txt_asu"
@@ -184,7 +184,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Power: " />
+                    android:text="@string/cell_info_power" />
 
                 <TextView
                     android:id="@+id/txt_power"
@@ -211,7 +211,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Serving"
+                android:text="@string/serving"
                 android:textStyle="italic|bold" />
 
             <TextView
@@ -233,7 +233,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CID: " />
+                    android:text="@string/cell_info_cid" />
 
                 <TextView
                     android:id="@+id/txt_4g_cid"
@@ -249,7 +249,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PCI: " />
+                    android:text="@string/cell_info_pci" />
 
                 <TextView
                     android:id="@+id/txt_4g_pci"
@@ -265,7 +265,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TAC: " />
+                    android:text="@string/cell_info_tac" />
 
                 <TextView
                     android:id="@+id/txt_4g_tac"
@@ -286,7 +286,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="MCC: " />
+                    android:text="@string/cell_info_mcc" />
 
                 <TextView
                     android:id="@+id/txt_4g_mcc"
@@ -302,7 +302,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="MNC: " />
+                    android:text="@string/cell_info_mcc" />
 
                 <TextView
                     android:id="@+id/txt_4g_mnc"
@@ -318,7 +318,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TA: " />
+                    android:text="@string/cell_info_ta" />
 
                 <TextView
                     android:id="@+id/txt_4g_ta"
@@ -339,7 +339,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="dBm: " />
+                    android:text="@string/cell_info_dbm" />
 
                 <TextView
                     android:id="@+id/txt_4g_dbm"
@@ -355,7 +355,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ASU: " />
+                    android:text="@string/cell_info_asu" />
 
                 <TextView
                     android:id="@+id/txt_4g_asu"
@@ -371,7 +371,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Power: " />
+                    android:text="@string/cell_info_power" />
 
                 <TextView
                     android:id="@+id/txt_4g_power"
