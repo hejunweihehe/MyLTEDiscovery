@@ -33,6 +33,7 @@
     <string name="signal_4g">4G信号: </string>
     <string name="signal_2g_3g">2G/3G信号: </string>
     <string name="serving">Serving</string>
+    <string name="neighbor">Neighbor</string>
     <string name="cell_info_lac">LAC: </string>
     <string name="cell_info_cid">CID: </string>
     <string name="cell_info_psc">PSC: </string>
@@ -44,6 +45,7 @@
     <string name="cell_info_pci">PCI: </string>
     <string name="cell_info_tac">TAC: </string>
     <string name="cell_info_ta">TA: </string>
+    <string name="cell_info_rssi">RSSI: </string>
 
     <!-- default -->
     <string name="default_tower">Tower: N/A</string>
