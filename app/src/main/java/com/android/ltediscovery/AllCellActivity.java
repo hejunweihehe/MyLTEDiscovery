@@ -73,7 +73,6 @@ public class AllCellActivity extends Activity {
 
     @SuppressLint("NewApi")
     private void updateCellInfo() {
-        Log.d(TAG, "updateCellInfo");
         List<CellInfo> cellInfoList = tm.getAllCellInfo();
         if (cellInfoList == null) {
             return;
